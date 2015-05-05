@@ -3,6 +3,14 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
   .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name, autofocus: true
+  .field
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name
+  .field
     = f.label :email
     %br/
     = f.email_field :email, autofocus: true
@@ -11,7 +19,7 @@
       Currently waiting confirmation for: #{resource.unconfirmed_email}
   .field
     = f.label :password
-    %i (leave blank if you don't want to change it)
+    %i (leave blank for no change)
     %br/
     = f.password_field :password, autocomplete: "off"
   .field
@@ -23,6 +31,10 @@
     %i (we need your current password to confirm your changes)
     %br/
     = f.password_field :current_password, autocomplete: "off"
+  .field
+    %b Is admin?
+    %br/
+    = current_user.admin
   .actions
     = f.submit "Update"
 %h3 Cancel my account
