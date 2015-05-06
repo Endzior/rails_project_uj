@@ -20,7 +20,7 @@
     - if @validatable
       %em
         (#{@minimum_password_length} characters minimum)
-    %br/
+    %br
     = f.password_field :password, autocomplete: "off"
   .field
     = f.label :password_confirmation
@@ -28,4 +28,4 @@
     = f.password_field :password_confirmation, autocomplete: "off"
   .actions
     = f.submit "Sign up"
-= render "devise/shared/links"
+/= render "devise/shared/links"
