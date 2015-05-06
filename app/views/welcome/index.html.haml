@@ -1,2 +1,7 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.haml
+%h1 Welcome!
+%p 
+  Hello, 
+  - if user_signed_in?
+    = current_user.full_name
+  - else
+    you are currently not logged in.
