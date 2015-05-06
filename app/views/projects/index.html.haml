@@ -1,7 +1,7 @@
-%h1 Current projects :
+.page-header
+  %h1 Current projects :
 - @projects.each do |project|
   .row
-    .col-xs-6.col-lg-4
-      %h2= link_to project.name, project_path(project)
-      %h5
-        = project.created_at.strftime('%F %T')
+    .col
+      %h3= link_to project.name, project_path(project)
+      %h5= project.created_at.strftime('%F %T')

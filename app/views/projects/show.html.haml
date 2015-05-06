@@ -1,0 +1,6 @@
+.page-header
+  %h1
+    = @project.name 
+= simple_format(@project.description, {}, wrapper_tag: 'div')
+%br/
+=link_to "Back to project list", projects_path
