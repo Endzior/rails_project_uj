@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508113757) do
+ActiveRecord::Schema.define(version: 20150508115954) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20150508113757) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "projects_tickets", id: false, force: :cascade do |t|
+    t.integer "projects_id"
+    t.integer "tickets_id"
+  end
+
+  add_index "projects_tickets", ["projects_id"], name: "index_projects_tickets_on_projects_id"
+  add_index "projects_tickets", ["tickets_id"], name: "index_projects_tickets_on_tickets_id"
 
   create_table "tickets", force: :cascade do |t|
     t.string   "name"

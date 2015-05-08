@@ -1,8 +1,7 @@
 class TicketsController < ApplicationController
-  
-  def show
-    @project = Project.find(params[:project_id])
-    @ticket = @project.tickets.find(params[:id])
+  ## shows all tickets said user is part of
+  def list
+    
   end
   
   def create

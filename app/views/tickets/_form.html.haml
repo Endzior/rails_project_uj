@@ -1,0 +1,7 @@
+= simple_form_for([@project, @project.tickets.build], html: { class: 'form-vertical' }) do |f|   
+  = f.input :name
+  = f.input :description
+  = f.input :priority
+  = f.input :difficulty
+  = f.input :status
+  = f.button :submit
