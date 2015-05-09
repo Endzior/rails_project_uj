@@ -3,11 +3,11 @@
     Project name : 
     = @project.name 
 = simple_format(@project.description, {}, wrapper_tag: 'div')
-%br/
+%br
 .page-header
   %h1
     Tickets
-%br/
+%br
 %a.btn.btn-default{:href => new_project_ticket_path(@project)}
   Add a ticket to this project
 %a.btn.btn-default{:href => projects_path}
