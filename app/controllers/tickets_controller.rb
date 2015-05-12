@@ -17,6 +17,11 @@ class TicketsController < ApplicationController
     @ticket = @project.tickets.find(params[:id])
   end
   
+  def edit
+    @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.find(params[:id])
+  end
+  
   def create
     @project = Project.find(params[:project_id])
     @ticket = @project.tickets.create(ticket_params)
@@ -30,6 +35,10 @@ class TicketsController < ApplicationController
     @ticket.destroy
     
     redirect_to project_path(@project)
+  end
+  
+  def update
+    
   end
   
   private

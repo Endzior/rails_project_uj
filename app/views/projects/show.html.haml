@@ -8,11 +8,39 @@
   %h1
     Tickets
 %br
-- @tickets.each do |ticket|
-  .row
-    .col
-      %h4= link_to ticket.name, project_ticket_path(@project, ticket)
-%a.btn.btn-default{:href => new_project_ticket_path(@project)}
-  Add a ticket to this project
-%a.btn.btn-default{:href => projects_path}
-  Back to projects list
+.table-responsive
+  %table.table.table-condensed
+    %tr.info
+      %th
+        ID
+      %th
+        Name
+      %th
+        Description
+      %th
+        Priority
+      %th
+        Difficulty
+      %th
+        Ticket options
+    - @tickets.each do |ticket|
+      %tr{class: (ticket.status == 0 ? "active" : (ticket.status == 1 ? "success" : "warning"))}
+        %td
+          = ticket.id
+        %td
+          = ticket.name
+        %td
+          = ticket.description
+        %td
+          = ticket.priority
+        %td
+          = ticket.difficulty
+        %td
+          .btn-group
+            =link_to "Show", project_ticket_path(@project, ticket), method: :get, class: "btn btn-default"
+            =link_to "Edit", edit_project_ticket_path(@project, ticket), method: :get, class: "btn btn-default"
+            =link_to "Delete", project_ticket_path(@project, ticket), method: :delete, class: "btn btn-default"
+%br/
+.btn-group
+  =link_to "Add a ticket to this project", new_project_ticket_path(@project), method: :get, class: "btn btn-default"
+  =link_to "Back to projects list", projects_path, method: :get, class: "btn btn-default"
