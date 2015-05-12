@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509143000) do
+ActiveRecord::Schema.define(version: 20150512121159) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 20150509143000) do
     t.integer  "priority"
     t.integer  "difficulty"
     t.integer  "status"
-    t.integer  "projects_id"
+    t.integer  "project_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "tickets", ["projects_id"], name: "index_tickets_on_projects_id"
+  add_index "tickets", ["project_id"], name: "index_tickets_on_project_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
