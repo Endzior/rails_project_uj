@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
+    @tickets = @project.tickets.all
   end
   
   def edit
@@ -41,6 +42,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to projects_path
   end
+  
   private
   def project_params
     params.require(:project).permit(:name, :description)

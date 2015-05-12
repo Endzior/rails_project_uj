@@ -1,7 +1,11 @@
 class TicketsController < ApplicationController
   ## shows all tickets said user is part of
   def list
-    
+    @projects = Project.all
+    @tickets = []
+    @projects.each do |p|
+      @tickets[p.id] = p.tickets.all
+    end
   end
   
   def new
@@ -9,7 +13,8 @@ class TicketsController < ApplicationController
   end
   
   def show
-    
+    @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.find(params[:id])
   end
   
   def create
@@ -21,13 +26,15 @@ class TicketsController < ApplicationController
   
   def destroy
     @project = Project.find(params[:project_id])
-    @ticket = @project.tickets.find(ticket_params)
+    @ticket = @project.tickets.find(params[:id])
     @ticket.destroy
+    
     redirect_to project_path(@project)
   end
   
   private
   def ticket_params
     params.require(:ticket).permit(:name, :description, :priority, :difficulty, :status)
+
   end
 end

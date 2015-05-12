@@ -8,6 +8,10 @@
   %h1
     Tickets
 %br
+- @tickets.each do |ticket|
+  .row
+    .col
+      %h4= link_to ticket.name, project_ticket_path(@project, ticket)
 %a.btn.btn-default{:href => new_project_ticket_path(@project)}
   Add a ticket to this project
 %a.btn.btn-default{:href => projects_path}
