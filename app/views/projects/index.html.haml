@@ -1,7 +1,23 @@
 .page-header
-  %h1 Current projects
+  %h1 Projects
 - @projects.each do |project|
   .row
     .col
       %h3= link_to project.name, project_path(project)
-      %h5= project.created_at.strftime('%F %T')
+      %h4
+        .col-md-4
+          Created at: 
+          = project.created_at.strftime('%F %T')
+        .col-md-offset-6
+          Tickets in total :
+          = @project_counters[project.id].sum
+      %h5
+        .col-md-3
+          Active tickets: 
+          = @project_counters[project.id][0]
+        .col-md-3
+          Finished tickets: 
+          = @project_counters[project.id][1]
+        .col-md-3
+          Cancelled tickets: 
+          = @project_counters[project.id][2]

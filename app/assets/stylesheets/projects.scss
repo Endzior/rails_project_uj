@@ -1,3 +1,28 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+td#veryhigh{
+  color: #FF0000;
+  font-size: 150%;
+}
+
+td#high{
+  color: #FF7700;
+  font-size: 150%;
+}
+
+td#medium{
+  color: #FFDD00;
+  font-size: 150%;
+}
+
+td#low{
+  color: #99FF00;
+  font-size: 150%;
+}
+
+td#verylow{
+  color: #00FF00;
+  font-size: 150%;
+}

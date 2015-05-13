@@ -3,4 +3,33 @@ class Ticket < ActiveRecord::Base
   has_many :participants, class_name: "User", foreign_key: "leader_id"
   has_one :leader
   
+  def get_priority
+    case priority
+    when 1
+      return 'very low'
+    when 2
+      return 'low'
+    when 3
+      return 'normal'
+    when 4
+      return 'long'
+    else
+      return 'very long'
+    end
+  end
+  
+  def get_difficulty
+    case difficulty
+    when 1
+      return 'very easy'
+    when 2
+      return 'easy'
+    when 3
+      return 'normal'
+    when 4
+      return 'hard'
+    else
+      return 'very hard'
+    end
+  end
 end
