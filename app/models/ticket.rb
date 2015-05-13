@@ -12,9 +12,9 @@ class Ticket < ActiveRecord::Base
     when 3
       return 'normal'
     when 4
-      return 'long'
+      return 'high'
     else
-      return 'very long'
+      return 'very high'
     end
   end
   
