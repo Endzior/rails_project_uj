@@ -38,7 +38,14 @@ class TicketsController < ApplicationController
   end
   
   def update
+    @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.find(params[:id])
     
+    if @ticket.update(ticket_params)
+      redirect_to project_ticket_path(@project.id, @ticket)
+    else
+      render 'edit'
+    end
   end
   
   private

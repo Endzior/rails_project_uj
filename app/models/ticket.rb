@@ -25,7 +25,7 @@ class Ticket < ActiveRecord::Base
     when 2
       return 'easy'
     when 3
-      return 'normal'
+      return 'medium'
     when 4
       return 'hard'
     else

@@ -1,8 +1,11 @@
-= simple_form_for([@project, @project.tickets.build], html: { class: 'form-vertical' }) do |f|   
+= simple_form_for([@project, @ticket], html: { class: 'form-vertical' }) do |f|   
   = f.input :name
   = f.input :description
-  = f.input :priority
-  = f.input :difficulty
-  = f.input :status
+  = f.input :priority do
+    = f.select :priority, [['very low', 1], ['low', 2], ['normal', 3], ['high', 4], ['very high', 5]]
+  = f.input :difficulty do
+    = f.select :difficulty, [['very easy', 1], ['easy', 2], ['medium', 3], ['hard', 4], ['very hard', 5]]
+  = f.input :status do
+    = f.select :status, [['active', 0], ['finished', 1], ['cancelled', -1]]
   /= f.association :users
   = f.button :submit
