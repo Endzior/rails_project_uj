@@ -2,6 +2,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :project
   has_many :participants, class_name: "User", foreign_key: "leader_id"
   has_one :leader
+  validates :priority, :name, :description, :difficulty, :status, :project_id, presence: true
   
   def get_priority
     case priority
