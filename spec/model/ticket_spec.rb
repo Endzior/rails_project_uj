@@ -29,7 +29,16 @@ describe Ticket do
   
   describe 'get difficulty' do
     it 'returns priority string depending on priority integer' do
-      
+      @ticket.difficulty = 1
+      expect(@ticket.get_difficulty).to eq 'very easy'
+      @ticket.difficulty = 2
+      expect(@ticket.get_difficulty).to eq 'easy'
+      @ticket.difficulty = 3
+      expect(@ticket.get_difficulty).to eq 'medium'
+      @ticket.difficulty = 4
+      expect(@ticket.get_difficulty).to eq 'hard'
+      @ticket.difficulty = 5
+      expect(@ticket.get_difficulty).to eq 'very hard'
     end
   end
 end
