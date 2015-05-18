@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  belongs_to :ticket
+  has_many :projects
   validates :first_name, :last_name, presence: true
   
   def full_name

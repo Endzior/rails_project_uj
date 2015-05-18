@@ -12,8 +12,8 @@
  *
  *= require_tree .
  *= require_self
- */
-*= require cookie_alert
+ *= require cookie_alert
+*/
 
 
 
@@ -22,7 +22,7 @@ html {
   min-height: 100%;
 }
 
-*{
+* {
   font-family: Algerian;
 }
 
@@ -30,6 +30,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 0px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;

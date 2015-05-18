@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :project do
     sequence(:name) { |n| "Project name#{n}}" }
     sequence(:description) { |n| "Project description#{n}}" }
+    association :user, :factory => :user
   end
   
   factory :project_with_tickets, parent: :project do

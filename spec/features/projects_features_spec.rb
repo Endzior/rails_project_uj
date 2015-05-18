@@ -12,9 +12,23 @@ feature 'projects' do
       visit projects_path
       
       expect(page).to have_content(@project_without_tickets.name)
+      expect(page).to have_content("Leader : " + @project_without_tickets.user.full_name)
+      expect(page).to have_content(@project_with_5_tickets.name)
+      expect(page).to have_content("Leader : " + @project_with_5_tickets.user.full_name)
       expect(page).to have_content(@project_with_100_tickets.name)
+      expect(page).to have_content("Leader : " + @project_with_100_tickets.user.full_name)
       expect(page).to have_content('Tickets in total : ' + 100.to_s)
-      expect(page).to have_content('© Endzior 2015')
+    end
+  end
+  
+  describe 'user visits specific project page with no tickets assigned to it' do
+    it 'user sees projects name, it\'s description and the leader of the project' do
+      visit project_path(@project_without_tickets)
+      
+      expect(page).to have_content(@project_without_tickets.user.full_name)
+      expect(page).to have_content(@project_without_tickets.name)
+      expect(page).to have_content(@project_without_tickets.description) 
+
     end
   end
 end

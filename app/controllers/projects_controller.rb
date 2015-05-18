@@ -27,12 +27,9 @@ class ProjectsController < ApplicationController
   ###crud
   
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      redirect_to @project
-    else
-      render 'new'
-    end
+    @user = current_user
+    @project = @user.projects.create(project_params)
+    redirect_to @project
   end
   
   def update

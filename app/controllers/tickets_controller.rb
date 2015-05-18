@@ -10,6 +10,7 @@ class TicketsController < ApplicationController
   
   def new
     @project = Project.find(params[:project_id])
+    @ticket = Ticket.new
   end
   
   def show
