@@ -34,13 +34,14 @@
         .col-lg-9
           %br
           %br
-          %br
           = bootstrap_flash
           = yield
           / /.well
         / /span
       / /row
-    %footer
-      %p © Endzior 2015
-      = display_cookie_alert
+    -#%footer.footer
+      .container
+        %p © Endzior 2015
+        
+    = display_cookie_alert
     / /container
