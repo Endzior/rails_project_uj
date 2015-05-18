@@ -39,6 +39,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'html2haml'
 gem 'simple_form'
 gem 'capybara'
+gem 'cookie_alert'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

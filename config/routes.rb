@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   
   root 'welcome#index'
+  mount CookieAlert::Engine => "/cookie-alert"
   
   get 'tickets' => 'tickets#list'
   
