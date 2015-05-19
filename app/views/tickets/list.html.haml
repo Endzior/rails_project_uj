@@ -1,0 +1,40 @@
+.table-responsive
+  %table.table.table-condensed
+    %tr.info
+      %th
+        ID
+      %th
+        Name
+      %th
+        Leader
+      %th
+        Participants
+      %th
+        Priority
+      %th
+        Difficulty
+      %th
+        Ticket options
+    - @projects.each do |project|
+      - @tickets[project.id].each do |ticket|
+        - if ticket != nil
+          %tr{class: (ticket.status == 0 ? "active" : (ticket.status == 1 ? "success" : "warning"))}
+            %td
+              = ticket.id
+            %td
+              = ticket.name
+            %td
+              toDo
+            %td
+              toDo
+            %td{id: (ticket.priority == 1 ? "verylow" : (ticket.priority == 2 ? "low" : ticket.priority == 3 ? "medium" : ticket.priority == 4 ? "high" : "veryhigh"))}
+              = ticket.get_priority
+            %td{id: (ticket.difficulty == 1 ? "verylow" : (ticket.difficulty == 2 ? "low" : ticket.difficulty == 3 ? "medium" : ticket.difficulty == 4 ? "high" : "veryhigh"))}
+              = ticket.get_difficulty
+            %td
+              .btn-group
+                =link_to "Show", project_ticket_path(project, ticket), method: :get, class: "btn btn-default"
+                - if can? :edit, ticket
+                  =link_to "Edit", edit_project_ticket_path(project, ticket), method: :get, class: "btn btn-default"
+                - if can? :delete, ticket
+                  =link_to "Delete", project_ticket_path(project, ticket), method: :delete, class: "btn btn-default", data: { confirm: 'Do you really want to delete this ticket?' }

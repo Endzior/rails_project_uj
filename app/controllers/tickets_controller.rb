@@ -1,10 +1,10 @@
 class TicketsController < ApplicationController
   ## shows all tickets said user is part of
   def list
-    @projects = Project.all
     @tickets = []
-    @projects.each do |p|
-      @tickets[p.id] = p.tickets.all
+    @projects = current_user.projects
+    @projects.each do |project|
+      @tickets[project.id] = project.tickets
     end
   end
   
@@ -21,6 +21,7 @@ class TicketsController < ApplicationController
   def edit
     @project = Project.find(params[:project_id])
     @ticket = @project.tickets.find(params[:id])
+    @attachment = Attachment.new
   end
   
   def create
@@ -52,6 +53,5 @@ class TicketsController < ApplicationController
   private
   def ticket_params
     params.require(:ticket).permit(:name, :description, :priority, :difficulty, :status)
-
   end
 end

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :projects do
-    resources :tickets
+    resources :tickets do
+      resources :attachments
+    end
   end
   
   root 'welcome#index'

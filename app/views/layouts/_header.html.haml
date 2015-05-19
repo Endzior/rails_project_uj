@@ -15,9 +15,9 @@
           - else
             %li= link_to "Projects list", projects_path, method: :get
           - if current_page?(tickets_path)
-            %li.active= link_to "My tickets(WIP)", tickets_path, method: :get
+            %li.active= link_to "My tickets", tickets_path, method: :get
           - else
-            %li= link_to "My tickets(WIP)", tickets_path, method: :get
+            %li= link_to "My tickets", tickets_path, method: :get
         - if user_signed_in?
           %li= link_to "Sign out", destroy_user_session_path, method: :delete
         - else

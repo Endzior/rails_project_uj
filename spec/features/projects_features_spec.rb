@@ -4,7 +4,7 @@ feature 'projects' do
   before :each do
     @project_without_tickets = create(:project)
     @project_with_5_tickets = create(:project_with_tickets)
-    @project_with_100_tickets = create(:project_with_tickets, tickets_count: 100)
+    @project_with_20_tickets = create(:project_with_tickets, tickets_count: 20)
   end
   
   describe 'user visits projects page' do
@@ -15,9 +15,9 @@ feature 'projects' do
       expect(page).to have_content("Leader : " + @project_without_tickets.user.full_name)
       expect(page).to have_content(@project_with_5_tickets.name)
       expect(page).to have_content("Leader : " + @project_with_5_tickets.user.full_name)
-      expect(page).to have_content(@project_with_100_tickets.name)
-      expect(page).to have_content("Leader : " + @project_with_100_tickets.user.full_name)
-      expect(page).to have_content('Tickets in total : ' + 100.to_s)
+      expect(page).to have_content(@project_with_20_tickets.name)
+      expect(page).to have_content("Leader : " + @project_with_20_tickets.user.full_name)
+      expect(page).to have_content('Tickets in total : ' + 20.to_s)
     end
   end
   
@@ -34,9 +34,9 @@ feature 'projects' do
   
   describe 'user visits specific project page with many tickets assigned to it' do
     it 'user sees projects name, it\'s description, leader of the project and many tickets' do
-      visit project_path(@project_with_100_tickets)
+      visit project_path(@project_with_20_tickets)
       
-      @project_with_100_tickets.tickets.each do |ticket|
+      @project_with_20_tickets.tickets.each do |ticket|
         expect(page).to have_content(ticket.name)
         expect(page).to have_content(ticket.get_priority)
         expect(page).to have_content(ticket.get_difficulty)

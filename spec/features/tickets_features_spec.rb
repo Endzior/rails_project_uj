@@ -1,11 +1,13 @@
 require 'rails_helper'
-include Devise::TestHelpers
 
 feature 'tickets' do
   before :each do
     @user = create(:user)
     @project = create(:project)
     @ticket = create(:ticket)
+
+    #sign_in :user
+    
     visit new_user_session_path
       
     fill_in 'user_email', :with => @user.email
