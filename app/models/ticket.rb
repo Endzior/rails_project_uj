@@ -1,6 +1,9 @@
 class Ticket < ActiveRecord::Base
   belongs_to :project
+  has_many :attachments
   validates :priority, :name, :description, :difficulty, :status, :project_id, presence: true
+  has_attached_file :picture, :styles => { :medium => "300x300", :thumb => "100x100" }
+  
   
   def get_priority
     case priority
