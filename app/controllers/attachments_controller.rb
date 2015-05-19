@@ -1,16 +1,17 @@
 class AttachmentsController < ApplicationController
   
-  #def show
-  #  @project = Project.find(params[:project_id])
-  #  @ticket = @project.tickets.find(params[:ticket_id])
-  #  @attachment = @ticket.attachments.find(params[:id])
-  #end
+  def show
+    @attachment = Attachment.find(params[:id])
+    send_file @attachment.attachedfile.path, :type => @attachment.attachedfile_content_type, :disposition => 'inline'
+  end
   
   def create
     @project = Project.find(params[:project_id])
     @ticket = @project.tickets.find(params[:ticket_id])
-    attachments_params[:filetype] = (attachments_params.attached_file_content_type.grep(/image/) == [] ? 'doc' : 'image')
     @attachment = @ticket.attachments.create(attachments_params)
+    
+    @attachment.filetype = (@attachment.attachedfile_content_type.grep(/image/) == [] ? 'doc' : 'image')
+    @attachment.save
     
     redirect_to edit_project_ticket_path(@project, @ticket)
   end
