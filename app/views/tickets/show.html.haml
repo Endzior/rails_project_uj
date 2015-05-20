@@ -3,7 +3,7 @@
     = @ticket.name
     %small 
       as 
-      = current_user.full_name
+      = mail_to current_user.email, current_user.full_name
       from project
       = @project.name
 .panel
@@ -13,9 +13,7 @@
     Attachments
     %small
       one simple click away from secret stuff
-.panel
-  - @ticket.attachments.each do |a|
-    =link_to a.attachedfile_file_name, project_ticket_attachment_path(@project, @ticket, a), method: :get, class: "btn btn-default", :target => '_blank'
+= render 'avaliable_attachments'
 .btn-group
   =link_to 'Delete this ticket', project_ticket_path(@project, @ticket), method: :delete, class:  "btn btn-default"
   =link_to 'Edit this ticket', edit_project_ticket_path(@project, @ticket), method: :get, class: "btn btn-default"

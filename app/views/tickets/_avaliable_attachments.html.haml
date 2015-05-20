@@ -1,0 +1,12 @@
+.panel
+  .row
+    - @ticket.attachments.each do |a|
+      .col-sm-6.col-md-4
+        .thumbnail
+          - if a.filetype.grep(/doc/) == []
+            = image_tag a.attachedfile.url(:thumb)
+          - else
+            = image_tag Attachment.new.attachedfile.url(:thumb)
+          .btn-group.btn-group-justified
+            = link_to "Show", project_ticket_attachment_path(@project, @ticket, a), method: :get, class: "btn btn-default", :target => '_blank'
+            = link_to "Delete", project_ticket_attachment_path(@project, @ticket, a), method: :delete, class: "btn btn-default"

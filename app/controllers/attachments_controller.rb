@@ -17,7 +17,9 @@ class AttachmentsController < ApplicationController
   end
   
   def destroy
-    
+    session[:return_to] ||= request.referer
+
+    redirect_to session.delete(:return_to)
   end
   
   private

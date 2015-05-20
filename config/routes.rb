@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
   mount CookieAlert::Engine => "/cookie-alert"
   
-  get 'tickets' => 'tickets#list'
+  get 'list/tickets' => 'tickets#list'
+  
+  get 'list/projects' => 'projects#list'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

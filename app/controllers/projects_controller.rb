@@ -10,6 +10,17 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def list
+    @user = current_user
+    @projects = current_user.projects.all.order('updated_at DESC')
+    @project_counters = [[]]
+    @projects.each do |p|
+      @tickets = p.tickets.all
+      count_tickets
+      @project_counters[p.id] = [@counter_active, @counter_finished, @counter_cancelled]
+    end
+  end
+  
   def new
     @project = Project.new
   end
@@ -17,8 +28,9 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @tickets = @project.tickets.all
-    
   end
+  
+
   
   def edit
     @project = Project.find(params[:id])
