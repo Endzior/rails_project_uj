@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519123333) do
+ActiveRecord::Schema.define(version: 20150520151915) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "attachedfile_file_name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150519123333) do
     t.string   "filetype"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "customname"
   end
 
   add_index "attachments", ["ticket_id"], name: "index_attachments_on_ticket_id"

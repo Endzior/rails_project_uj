@@ -1,5 +1,4 @@
 class AttachmentsController < ApplicationController
-  
   def show
     @attachment = Attachment.find(params[:id])
     send_file @attachment.attachedfile.path, :type => @attachment.attachedfile_content_type, :disposition => 'inline'
@@ -24,6 +23,6 @@ class AttachmentsController < ApplicationController
   
   private
   def attachments_params
-    params.require(:attachment).permit(:attachedfile)
+    params.require(:attachment).permit(:attachedfile, :customname)
   end
 end
