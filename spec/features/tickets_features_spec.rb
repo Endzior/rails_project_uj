@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'tickets' do
   before :each do
-    @user = create(:user)
+    @admin = create(:admin)
     @project = create(:project)
     @ticket = create(:ticket)
 
@@ -10,7 +10,7 @@ feature 'tickets' do
     
     visit new_user_session_path
       
-    fill_in 'user_email', :with => @user.email
+    fill_in 'user_email', :with => @admin.email
     fill_in 'user_password', :with => 'password'
       
     click_button 'Log in'
