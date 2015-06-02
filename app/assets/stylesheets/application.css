@@ -29,6 +29,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 0px;
+  background-color: #b0c4de;
 }
 
 .footer {
@@ -60,4 +61,35 @@ body > .container {
 
 code {
   font-size: 100%;
+}
+
+/* NAVBAR */
+
+.navbar-default .navbar-brand{
+  color: green;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #000;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: white; 
+  background-color: green;
+}
+
+.navbar-default {
+    background-color: #b0c4de;
+    border-color: #030033;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: silver; /*Change rollover cell color here*/
+}
+
+
+.navbar-default .navbar-nav > li > a {
+  color: green; /*Change active text color here*/
 }
