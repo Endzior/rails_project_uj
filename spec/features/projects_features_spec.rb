@@ -7,6 +7,26 @@ feature 'projects' do
     @project_with_20_tickets = create(:project_with_tickets, tickets_count: 20)
   end
   
+  describe 'user creates a project' do
+    it 'user creates a project and then sees the project he has created' do
+      #sign_in :user
+      @admin = create(:admin)
+      visit new_user_session_path
+      fill_in 'user_email', :with => @admin.email
+      fill_in 'user_password', :with => 'password'
+      click_button 'Log in'
+      
+      visit new_project_path
+      
+      fill_in 'project_name', :with => 'Project name'
+      fill_in 'project_description', :with => 'Project description'
+      click_button 'Create Project'
+      
+      expect(page).to have_content('Project name')
+      expect(page).to have_content('Project description')
+    end
+  end
+  
   describe 'user visits projects page' do
     it 'user sees list of projects with the number of tickets it has' do
       visit projects_path
